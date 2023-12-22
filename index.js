@@ -5,10 +5,12 @@ const cors = require('cors');
 const jwt = require('jsonwebtoken');
 const port = process.env.PORT || 8000;
 
-app.use(cors({
-    origin: 'http://localhost:5173',
-    credentials: true,
-}));
+app.use(
+    cors({
+        origin: ['http://localhost:5173', 'https://enmmedia-19300.web.app'],
+        credentials: true,
+    }),
+)
 app.use(express.json());
 
 /************ MongoDB Connection ************/
@@ -125,7 +127,7 @@ async function run() {
             res.send(result);
         })
 
-        await client.db("admin").command({ ping: 1 });
+        // await client.db("admin").command({ ping: 1 });
         console.log("Pinged your deployment. You successfully connected to MongoDB!");
     } finally { }
 }
