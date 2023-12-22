@@ -6,7 +6,8 @@ const jwt = require('jsonwebtoken');
 const port = process.env.PORT || 8000;
 
 app.use(cors({
-    origin: ['http://localhost:5173']
+    origin: 'http://localhost:5173',
+    credentials: true,
 }));
 app.use(express.json());
 
@@ -61,7 +62,7 @@ async function run() {
             const query = {
                 _id: new ObjectId(req?.query?.id)
             }
-            const result = tasksCollection.deleteOne(query);
+            const result = await tasksCollection.deleteOne(query);
             res.send(result);
         })
 
