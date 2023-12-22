@@ -7,7 +7,7 @@ const port = process.env.PORT || 8000;
 
 app.use(
     cors({
-        origin: ['http://localhost:5173', 'https://enmmedia-19300.web.app'],
+        origin: ['http://localhost:5173', 'https://enmmedia-19300.web.app', 'https://task-management-barik.web.app'],
         credentials: true,
     }),
 )
